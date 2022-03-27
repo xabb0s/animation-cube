@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+body {
+  height: 100vh;
+  background: #0d1117;
+  perspective: 1500px;
+}
+.container {
+  transform-style: preserve-3d;
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateX(-20deg) rotateY(-45deg);
+  animation: cont-anim 6s linear infinite;
+  transition: top 2s;
+}
+.container > * {
+  text-align: center;
+  line-height: 300px;
+  font-size: 30px;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  background: #0000002a;
+}
+.front {
+  transform: translate3d(0, 0, 150px);
+}
+.front::before {
+  content: "Abbos Arts";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  background: #00ff00;
+  animation: animate 2s linear infinite alternate;
+  overflow: hidden;
+  font-size: 40px;
+  color: #333;
+}
+@keyframes animate {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+.right {
+  transform: translate3d(150px, 0, 0) rotateY(90deg);
+}
+.right::before {
+  content: "Abbos Arts";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  background: #00ff00;
+  animation: animate 2s linear infinite alternate;
+  overflow: hidden;
+  font-size: 40px;
+  color: #333;
+}
+.left {
+  transform: translate3d(-150px, 0, 0) rotateY(-90deg);
+}
+.left::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  background: #00ff00;
+  animation: animate 2s linear infinite alternate;
+}
+.back {
+  transform: translate3d(0, 0, -150px) rotateX(180deg) rotate(180deg);
+}
+.back::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  background: #00ff00;
+  animation: animate 2s linear infinite alternate;
+}
+.top {
+  transform: translate3d(0, -150px, 0) rotateX(90deg);
+}
+.container::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  background: #00ff00;
+  transform: rotateY(90deg) rotateX(90deg);
+  animation: animate2 2s linear infinite alternate;
+}
+@keyframes animate2 {
+  0% {
+    transform: translate3d(0, 150px, 0) rotateY(90deg) rotateX(90deg);
+  }
+  100% {
+    transform: translate3d(0, -150px, 0) rotateY(90deg) rotateX(90deg);
+  }
+}
+.bottom {
+  transform: translate3d(0, 150px, 0) rotateX(-90deg) rotateZ(-90deg);
+}
+.bottom::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  background: #00ff00;
+}
+.bottom::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  transform: translateY(50px) translateX(-120px);
+  opacity: .6;
+  filter: blur(30px);
+  transition: 1s;
+}
+.container:hover .bottom::after {
+  opacity: 1;
+  transform: translateY(100px) translateX(-50px);
+}
+.container:hover {
+  top: 45%;
+}
